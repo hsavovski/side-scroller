@@ -1,0 +1,24 @@
+{
+  "name": "new",
+  "version": "1.0.0",
+  "description": "new",
+  "main": "app.js",
+  "scripts": {
+    "start": "webpack --config webpack.config.js"
+  },
+  "author": "icosvsk",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "pixi.js": "^4.8.5",
+    "triangle-circle-collision": "^1.0.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  }
+}
