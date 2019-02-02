@@ -42,7 +42,6 @@ export function ground(screen)
 
 export function distanceUI(groundPos, heroPos)
 {
-    //the distance is calculated by 
     let distanceUI = new PIXI.Text({fontFamily : 'Arial', fontSize: 24, fill : 0xff1010, align : 'center'});
     let initialHeroPos = heroPos.x;
     distanceUI.init = () => {
