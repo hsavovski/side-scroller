@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js';
 import Cloud from './sprites/Cloud';
 import AirCraft from './sprites/Aircraft';
 import Obstacle from './sprites/Obstacle';
-import {ground, sky} from './sprites/Level';
+import {ground, sky, distanceUI} from './sprites/Level';
 import collide from 'triangle-circle-collision';
 import Tank from './sprites/Tank';
 
@@ -11,9 +11,10 @@ var app = new PIXI.Application(window.innerWidth, window.innerHeight);
 document.body.appendChild(app.view);
 
 let hero = new AirCraft(app.screen);
+let tilingGround = ground(app.screen);
 
 app.stage.addChild(sky(app.screen));
-app.stage.addChild(ground(app.screen));
+app.stage.addChild(tilingGround);
 var cloudCount = 5;
 for(var i=0; i<cloudCount;i++)
 {
@@ -40,6 +41,12 @@ for(var i=0; i<tankCount;i++)
     app.stage.addChild(tank);
 }
 app.stage.addChild(hero);
+app.stage.addChild(
+    distanceUI(
+        tilingGround.tilePosition, 
+        hero.position
+    )
+);
 
 // Listen for animate update
 app.ticker.add(function(delta) {
@@ -70,23 +77,19 @@ app.ticker.add(function(delta) {
                             {
                                 child.destroy();
                             }
-                            hero.init(
-                                app.screen.width/4,
-                                app.screen.height/2
-                            );
-
-                            obstacles.forEach(el => el.init());
-                            tanks.forEach(el => el.init());
-                                
+                            app.stage.children.forEach(el => {
+                                if(el.init != null)
+                                {
+                                    el.init();
+                                }
+                            });
+   
                             console.log("Collision");
 
                         }
                     }
-
                 });
             }
         }
-        
-
     });
 });

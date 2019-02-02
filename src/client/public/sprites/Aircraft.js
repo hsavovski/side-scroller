@@ -1,3 +1,4 @@
+import * as PIXI from 'pixi.js';
 
 export default class Aircraft extends PIXI.Sprite
 {
@@ -20,11 +21,11 @@ export default class Aircraft extends PIXI.Sprite
         window.addEventListener('keyup', this.onKeyUp.bind(this));
     }  
 
-    init(x,y)
+    init()
     {
-        //restart
-        this.position.x = x;
-        this.position.y = y;
+        //restart 
+        this.position.x = this.screen.width/4;
+        this.position.y = this.screen.height/2;
         this.velocity = {x:0,y:0};
         this.rotation = 0;
     }
