@@ -4,7 +4,8 @@
   "description": "new",
   "main": "app.js",
   "scripts": {
-    "start": "webpack --config webpack.config.js"
+    "watch": "webpack --config webpack.config.js",
+    "start": "node app.js"
   },
   "author": "icosvsk",
   "license": "ISC",
